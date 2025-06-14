@@ -97,30 +97,35 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.User'
 
 REST_FRAMEWORK = {
-    # 'DEFAULT_PERMISSION_CLASSES': [
-    #     'rest_framework.permissions.IsAuthenticated',
-    # ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
     ),
     'DEFAULT_FILTER_BACKENDS': [
         'django_filters.rest_framework.DjangoFilterBackend',
     ],
-    # 'DEFAULT_PAGINATION_CLASS': 'api.pagination.CustomPageNumberPaginator',
+    'DEFAULT_PAGINATION_CLASS': 'api.pagination.CustomPageNumberPaginator',
     'PAGE_SIZE': 10
 }
 
 DJOSER = {
     'TOKEN_MODEL': 'rest_framework.authtoken.models.Token',
-    # 'SERIALIZERS': {
-    #     'user': 'api.serializers.UserReadSerializer',
-    #     'user_create': 'api.serializers.UserCreateSerializer',
-    #     'current_user': 'api.serializers.UserReadSerializer',
-    # },
-    'PERMISSIONS': {
+    'PERMISSIONS':  {
         'activation': ['rest_framework.permissions.AllowAny'],
         'password_reset': ['rest_framework.permissions.AllowAny'],
-        'user': ['rest_framework.permissions.AllowAny'],
+        'password_reset_confirm': ['rest_framework.permissions.AllowAny'],
+        'set_password': ['djoser.permissions.CurrentUserOrAdmin'],
+        'username_reset': ['rest_framework.permissions.AllowAny'],
+        'username_reset_confirm': ['rest_framework.permissions.AllowAny'],
+        'set_username': ['djoser.permissions.CurrentUserOrAdmin'],
+        'user_create': ['rest_framework.permissions.AllowAny'],
+        'user_delete': ['djoser.permissions.CurrentUserOrAdmin'],
+        'user': ['djoser.permissions.CurrentUserOrAdmin'],
         'user_list': ['rest_framework.permissions.AllowAny'],
-    }
+        'token_create': ['rest_framework.permissions.AllowAny'],
+        'token_destroy': ['rest_framework.permissions.IsAuthenticated'],
+    },
+    'HIDE_USERS': False
 }

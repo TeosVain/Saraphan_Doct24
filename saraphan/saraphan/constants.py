@@ -2,8 +2,5 @@ MAX_LENGTH = 256
 MAX_TEXT_LENGHT = 10000
 MAX_LENGTH_USER = 150
 DEFAULT_PAGINATOR_LIMIT = 5
-ACTION_LIST_USER_VIEWSET = [
-    'me', 'update_avatar', 'subscribe', 'subscriptions', 'unsubscribe'
-]
 MIN_VALUE = 1
 MAX_VALUE = 320000

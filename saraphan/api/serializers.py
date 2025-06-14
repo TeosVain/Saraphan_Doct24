@@ -1,9 +1,6 @@
 from django.contrib.auth import get_user_model
-from django.shortcuts import get_object_or_404
 from rest_framework import serializers
-from rest_framework.validators import UniqueValidator
 
-from saraphan import constants, fields
 from goods.models import Category, Goods, Subcategory, CartGoods
 
 User = get_user_model()
@@ -43,10 +40,18 @@ class GoodsSerializer(serializers.ModelSerializer):
         ]
 
 
-class CartGoodsSerializer(serializers.ModelSerializer):
-    user = serializers.ReadOnlyField(source='user.username')
-    good = serializers.ReadOnlyField(source='good.name')
+class CartGoodsWriteSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CartGoods
         fields = '__all__'
+        read_only_fields = ['user']
+
+
+class CartGoodsReadSerializer(serializers.ModelSerializer):
+    # good = serializers.ReadOnlyField(source='good.name')
+    good = GoodsSerializer()
+
+    class Meta:
+        model = CartGoods
+        fields = ['good', 'amount']
