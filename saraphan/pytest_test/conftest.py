@@ -6,6 +6,7 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test.client import Client
 from django.urls import reverse
 from django.core.files.uploadedfile import SimpleUploadedFile
+from rest_framework.authtoken.models import Token
 from PIL import Image
 
 from goods.models import Goods, Category, Subcategory
@@ -21,12 +22,22 @@ def fake_image():
     image = Image.new('RGB', (100, 100), color='red')
     image.save(file, 'JPEG')
     file.seek(0)
-    return SimpleUploadedFile('test.jpg', file.read(), content_type='image/jpeg')
+    return SimpleUploadedFile(
+        'test.jpg', file.read(), content_type='image/jpeg'
+    )
+
+
+@pytest.fixture(autouse=True)
+def temp_media_root(tmp_path, settings):
+    """Переназначаем MEDIA_ROOT на временную директорию для всех тестов."""
+    settings.MEDIA_ROOT = tmp_path
+
 
 @pytest.fixture
 def author_token(django_user_model):
-    from rest_framework.authtoken.models import Token
-    user = django_user_model.objects.create_user(username='Автор', password='12345678')
+    user = django_user_model.objects.create_user(
+        username='Автор', password='12345678'
+    )
     token, _ = Token.objects.get_or_create(user=user)
     return token.key
 
