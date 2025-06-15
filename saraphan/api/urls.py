@@ -13,6 +13,8 @@ v1_patterns = [
     path('', include('djoser.urls')),
 ]
 
+app_name = 'api'
+
 urlpatterns = [
     path('auth/', include('djoser.urls.authtoken')),
     path('', include(v1_patterns)),

@@ -1,0 +1,146 @@
+[
+{
+  "model": "goods.category",
+  "pk": 3,
+  "fields": {
+    "name": "Спорт",
+    "slug": "sport",
+    "image": "imagesSport.jpeg"
+  }
+},
+{
+  "model": "goods.category",
+  "pk": 4,
+  "fields": {
+    "name": "Продукты",
+    "slug": "food",
+    "image": "imagesPro.jpeg"
+  }
+},
+{
+  "model": "goods.subcategory",
+  "pk": 4,
+  "fields": {
+    "name": "Тяжелая атлетика",
+    "slug": "Heavy",
+    "image": "imagesT.jpeg",
+    "category": 3
+  }
+},
+{
+  "model": "goods.subcategory",
+  "pk": 5,
+  "fields": {
+    "name": "Чипсы",
+    "slug": "chips",
+    "image": "1200px-Kartoffelchips-1.jpg",
+    "category": 4
+  }
+},
+{
+  "model": "goods.subcategory",
+  "pk": 6,
+  "fields": {
+    "name": "Напитки",
+    "slug": "drinks",
+    "image": "imagesNap.jpeg",
+    "category": 4
+  }
+},
+{
+  "model": "goods.goods",
+  "pk": 3,
+  "fields": {
+    "name": "Lays",
+    "slug": "lays_onion",
+    "image": "imagesLays.jpeg",
+    "text": "Чипсы вкусные",
+    "subcategory": 5,
+    "created_at": "2025-06-15T05:07:52.279Z",
+    "price": "120"
+  }
+},
+{
+  "model": "goods.goods",
+  "pk": 4,
+  "fields": {
+    "name": "Cola",
+    "slug": "cola",
+    "image": "imagesCola.jpeg",
+    "text": "Кола санкционная",
+    "subcategory": 6,
+    "created_at": "2025-06-15T05:08:31.046Z",
+    "price": "170"
+  }
+},
+{
+  "model": "goods.goods",
+  "pk": 5,
+  "fields": {
+    "name": "Гантели",
+    "slug": "g_heavy",
+    "image": "imagesGan.jpeg",
+    "text": "Гантели 20кг",
+    "subcategory": 4,
+    "created_at": "2025-06-15T05:09:11.558Z",
+    "price": "5000"
+  }
+},
+{
+  "model": "users.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$GSfLQd04RKglaF4RPMxgAe$Q9deltldY+bRpMS1vuiAV8NaERK7KcrM7xWnA5zgM50=",
+    "last_login": "2025-06-09T05:28:01.349Z",
+    "is_superuser": true,
+    "username": "Teos",
+    "first_name": "",
+    "last_name": "",
+    "email": "Teols1@mail.ru",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-06-09T05:27:31.398Z",
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$RsrqVDOGL419VySdD4HHql$LwiRf+6DbFDBZ3j/xnQy2kQQtDoLuQPMS9pumyfsgoE=",
+    "last_login": "2025-06-13T11:37:26Z",
+    "is_superuser": false,
+    "username": "Tim",
+    "first_name": "",
+    "last_name": "",
+    "email": "Tim@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-06-13T11:16:15Z",
+    "avatar": "images1.jpeg",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": 3,
+  "fields": {
+    "password": "MaryPass",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "Mary",
+    "first_name": "Mary",
+    "last_name": "",
+    "email": "Mary@yandex.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-06-15T05:10:00Z",
+    "avatar": "images.jpeg",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]

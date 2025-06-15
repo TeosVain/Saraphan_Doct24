@@ -11,6 +11,10 @@ class Category(models.Model):
     slug = models.SlugField()
     image = models.ImageField()
 
+    class Meta:
+        verbose_name = 'Категория'
+        verbose_name_plural = 'Категории'
+
     def __str__(self):
         return self.name
 
@@ -23,6 +27,10 @@ class Subcategory(models.Model):
         Category, on_delete=models.CASCADE, related_name='subcategories',
     )
 
+    class Meta:
+        verbose_name = 'Подкатегория'
+        verbose_name_plural = 'Подкатегории'
+
     def __str__(self):
         return self.name
 
@@ -30,7 +38,7 @@ class Subcategory(models.Model):
 class Goods(models.Model):
     name = models.CharField(
         max_length=MAX_LENGTH,
-        verbose_name='Название рецепта'
+        verbose_name='Название продукта'
     )
     slug = models.SlugField()
     image = models.ImageField()
@@ -55,13 +63,16 @@ class Goods(models.Model):
                                  options={'quality': 95})
 
     class Meta:
-        ordering = ['-created_at']
+        verbose_name = 'Товар'
+        verbose_name_plural = 'Товары'
 
     def __str__(self):
         return self.name
 
 
 class CartGoods(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE
+    )
     good = models.ForeignKey(Goods, on_delete=models.CASCADE)
     amount = models.IntegerField()
